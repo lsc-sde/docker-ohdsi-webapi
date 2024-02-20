@@ -1,9 +1,10 @@
-FROM python:alpine
+FROM ohdsi/webapi:2.14.0
+USER root
 
-RUN apk add gcc
-RUN pip install --upgrade pip
-RUN pip install kubernetes
-RUN MULTIDICT_NO_EXTENSIONS=1 pip install kopf
-ADD ./service.py /src/service.py
+RUN apt update -y
+RUN apt install libcap2-bin -y
+RUN setcap 'cap_net_bind_service=+ep' "/${JAVA_HOME}/bin/java"
+COPY ./startup.sh ./startup.sh
 
-CMD kopf run /src/service.py -A --standalone
+USER 101
+CMD ./startup.sh

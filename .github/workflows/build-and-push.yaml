@@ -16,6 +16,6 @@ jobs:
     uses: lsc-sde/lsc-sde/.github/workflows/docker-build.yaml@main
     needs: semver
     with:
-      imageName: ohdsi-atlas
+      imageName: ohdsi-webapi
       tag: ${{ needs.semver.outputs.GitVersion_SemVer }}
     secrets: inherit

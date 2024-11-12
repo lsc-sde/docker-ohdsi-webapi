@@ -2,7 +2,7 @@
 title: Container Image
 parent: WebAPI
 layout: page
-grand_parent: OHDSI
+ancestor: OHDSI
 ---
 
 This is a customised version of the OHDSI WebAPI image.
